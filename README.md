@@ -1,6 +1,4 @@
-<img src="assets/partnerup_logo.png" alt="PartnerUp Logo" width="300px">
-
-##
+<img src="assets/partnerup_logo.png" alt="PartnerUp Logo" width="400px">
 
 ## Table of Content
 - [About PartnerUp](#about-partnerup)
@@ -28,14 +26,21 @@ It's a community-driven platform that aims to empower students, enhance project 
 Join us on this exciting journey, log in with your GitHub account, and revolutionize the way you find project partners at ALX!
 
 ## Getting Started
-<img src="assets/login_page.png" alt="PartnerUp Login Page" width="300px">
+<img src="assets/login_page.png" alt="PartnerUp Login Page" width="400px">
+
 Using PartnerUp is simple and efficient. After logging in with their GitHub account, users can navigate to the partner search section.
-<img src="assets/profile_page.png" alt="PartnerUp Profile Page" width="300px">
-<img src="assets/search_page.png" alt="PartnerUp Search Page" width="300px">
+
+<img src="assets/profile_page.png" alt="PartnerUp Profile Page" width="400px">
+<img src="assets/search_page.png" alt="PartnerUp Search Page" width="400px">
+
 Here, they can specify their preferences for project partners, such as skill levels, commits, or other criteria.
-<img src="assets/match_page.png" alt="PartnerUp Match Page" width="300px">
+
+<img src="assets/match_page.png" alt="PartnerUp Match Page" width="400px">
+
 Our application then analyzes coding styles, commits, and repositories to filter potential partners based on the user's preferences. This tailored approach helps students find suitable project partners quickly and easily.
-<img src="assets/previous_matches.png" alt="PartnerUp Login Page" width="300px">
+
+<img src="assets/previous_matches.png" alt="PartnerUp Login Page" width="400px">
+
 Users will also have access to previous matches made by our application.
 
 ## Technologies
@@ -93,11 +98,11 @@ Users will also have access to previous matches made by our application.
     - GET /repos/{owner}/{repo}/commits: Retrieve a list of commits made to a specific GitHub repository.
 
 ## Authors
-**Ajisafe Oluwapelumi**
-[GitHub](https://github.com/ajipelumi)
-[LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/)
-[Twitter](https://twitter.com/the_pelumi)
-[Dev](https://dev.to/ajipelumi)
+### Ajisafe Oluwapelumi
+[GitHub](https://github.com/ajipelumi) <br>
+[LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/) <br>
+[Twitter](https://twitter.com/the_pelumi) <br>
+[Dev](https://dev.to/ajipelumi) <br>
 
 Oluwapelumi is a full-stack software engineer working on both the front-end and back-end of this project.
 Working on PartnerUp is a significant milestone in Oluwapelumi's career as it represents the culmination of the last one year of dedicated learning, practical experience, and a relentless pursuit of excellence in ALX software engineering program.
@@ -106,9 +111,9 @@ It's also an opportunity to make a meaningful impact on the lives of ALX student
 If you would like to contact [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), feel free to reach out!
 
 ## Acknowledgement
-ALX Staff & Student
-Holberton School Staff & Student
-Abdulqadir Ahmad
-Durojaiye Oladipupo
-Durojaiye Dickson
-Areola Daniel
+ALX Staff & Student <br>
+Holberton School Staff & Student <br>
+Abdulqadir Ahmad <br>
+Durojaiye Oladipupo <br>
+Durojaiye Dickson <br>
+Areola Daniel <br>
