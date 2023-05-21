@@ -1,2 +1,1 @@
-# partnerup
-Portfolio Project
+<img src="assets/horizontal_lockup.png" alt="PartnerUp Logo">
