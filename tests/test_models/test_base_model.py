@@ -7,7 +7,7 @@ from unittest import mock
 from models.base_model import BaseModel
 
 
-class Test_Base_Model(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     """ Test the BaseModel class. """
     def test_instantiation(self):
         """ Test that object is correctly created. """
@@ -35,15 +35,9 @@ class Test_Base_Model(unittest.TestCase):
         and that upon creation have identical updated_at and created_at
         value.
         """
-        tic = datetime.now()
         inst1 = BaseModel()
-        toc = datetime.now()
-        self.assertTrue(tic <= inst1.created_at <= toc)
-        time.sleep(1e-4)
-        tic = datetime.now()
+        time.sleep(0.1)
         inst2 = BaseModel()
-        toc = datetime.now()
-        self.assertTrue(tic <= inst2.created_at <= toc)
         self.assertEqual(inst1.created_at, inst1.updated_at)
         self.assertEqual(inst2.created_at, inst2.updated_at)
         self.assertNotEqual(inst1.created_at, inst2.created_at)

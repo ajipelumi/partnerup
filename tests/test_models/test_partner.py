@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 from models.partner import Partner
 
 
-class Test_Partner(unittest.TestCase):
+class TestPartner(unittest.TestCase):
     """ Test the Partner class"""
     def test_is_subclass(self):
         """ Test that Partner is a subclass of BaseModel. """
@@ -34,7 +34,7 @@ class Test_Partner(unittest.TestCase):
         self.assertEqual(type(new_d), dict)
         self.assertFalse("_sa_instance_state" in new_d)
         for attr in u.__dict__:
-            if attr is not "_sa_instance_state":
+            if attr != "_sa_instance_state":
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
@@ -43,7 +43,7 @@ class Test_Partner(unittest.TestCase):
         t_format = "%Y-%b-%d %H:%M"
         u = Partner()
         new_d = u.to_dict()
-        self.assertEqual(new_d["__class__"], "partner")
+        self.assertEqual(new_d["__class__"], "Partner")
         self.assertEqual(type(new_d["created_at"]), str)
         self.assertEqual(type(new_d["updated_at"]), str)
         self.assertEqual(new_d["created_at"], u.created_at.strftime(t_format))

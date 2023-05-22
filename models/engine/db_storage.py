@@ -6,7 +6,7 @@ from models.partner import Partner
 from models.user import User
 from os import getenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker, scoped_session
 
 classes = {"User": User, "Partner": Partner}
 

@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """ Base of all classes. """
 from datetime import datetime
-from models import storage
-from os import getenv
-import sqlalchemy
+import models
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
@@ -51,8 +49,8 @@ class BaseModel():
         with the current datetime.
         """
         self.updated_at = datetime.now()
-        storage.new(self)
-        storage.save()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self):
         """ Returns a dictionary containing all keys/values of __dict__. """
@@ -67,5 +65,5 @@ class BaseModel():
         return new_dict
 
     def delete(self):
-        """ Delete the current instance from the storage. """
-        storage.delete(self)
+        """ Delete the current instance from the models.storage. """
+        models.storage.delete(self)
