@@ -54,3 +54,7 @@ class Test_Partner(unittest.TestCase):
         partner = Partner()
         string = "[Partner] ({}) {}".format(partner.id, partner.__dict__)
         self.assertEqual(string, str(partner))
+
+
+if __name__ == '__main__':
+    unittest.main()
