@@ -13,7 +13,7 @@ class User(BaseModel, Base):
     username = Column(String(128), nullable=False)
     partners = relationship('Partner', cascade='all, delete',
                             backref='user')
-    
+
     def __init__(self, *args, **kwargs):
         """ Initializes user. """
         super().__init__(*args, **kwargs)

@@ -27,7 +27,7 @@ class BaseModel():
                 if key != "__class__":
                     setattr(self, key, value)
             if kwargs.get("created_at", None) and type(self.created_at) is str:
-                self.created_at = datetime.strptime(kwargs["created_at"], 'time')
+                self.created_at = datetime.strptime(kwargs["created_at"], time)
             else:
                 self.created_at = datetime.utcnow()
             if kwargs.get("updated_at", None) and type(self.updated_at) is str:
@@ -44,7 +44,7 @@ class BaseModel():
     def __str__(self):
         """ Returns a string representation. """
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
-    
+
     def save(self):
         """
         Updates the public instance attribute updated_at
@@ -65,7 +65,7 @@ class BaseModel():
         if "_sa_instance_state" in new_dict:
             del new_dict["_sa_instance_state"]
         return new_dict
-    
+
     def delete(self):
         """ Delete the current instance from the storage. """
         storage.delete(self)
