@@ -17,7 +17,7 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        """Instantiate a DBStorage object"""
+        """ Instantiate a DBStorage object. """
         PARTNERUP_MYSQL_USER = getenv('PARTNERUP_MYSQL_USER')
         PARTNERUP_MYSQL_PWD = getenv('PARTNERUP_MYSQL_PWD')
         PARTNERUP_MYSQL_HOST = getenv('PARTNERUP_MYSQL_HOST')
