@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Balsamiq Sans';
+    src: url('../fonts/BalsamiqSans-Bold.ttf') format('truetype'),
+    url('../fonts/BalsamiqSans-BoldItalic.ttf') format('truetype'),
+    url('../fonts/BalsamiqSans-Italic.ttf') format('truetype'),
+    url('../fonts/BalsamiqSans-Regular.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Balsamiq Sans';
+}
+
+.logo {
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+}
+
+.login {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    text-align: center;
+}
+
+input, button {
+    font-family: 'Balsamiq Sans';
+    font-weight: 400;
+    font-size: large;
+    padding: 10px 25px;
+    border: 3px solid black;
+    border-radius: 3px;
+    background: white;
+    box-sizing: border-box;
+    margin: 2px;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+
+footer {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    border-top: 2px solid black;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+footer div p {
+    margin: 0 10px;
+}
+
+a {
+    color: blue;
+}

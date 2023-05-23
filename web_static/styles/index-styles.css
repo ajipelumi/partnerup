@@ -19,14 +19,23 @@ body {
     top: 100px;
 }
 
-.center-button {
-    display: flex;
-    justify-content: center;
+.login {
+    width: 300px;
+    margin: 0 auto;
     position: relative;
     top: 100px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
 }
 
 button {
+    text-align: center;
+}
+
+input, button {
     font-family: 'Balsamiq Sans';
     font-weight: 400;
     font-size: large;
@@ -34,6 +43,8 @@ button {
     border: 3px solid black;
     border-radius: 3px;
     background: white;
+    box-sizing: border-box;
+    margin: 2px;
 }
 
 button:hover {
