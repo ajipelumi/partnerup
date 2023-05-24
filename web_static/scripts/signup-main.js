@@ -6,14 +6,14 @@ $(document).ready(() => {
         const email = $('input[name="email"]').val();
         const password = $('input[name="password"]').val();
 
-        if (username.trim() === '' || password.trim() === '') {
-            toastr.error('Oops!, You forgot to enter your username and password!', {
+        if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
+            toastr.error('Oops!, You forgot to enter your username, email and password!', {
                 timeOut: 2000,
             });
           return;
         }
 
-        new_user = {
+        let new_user = {
             "username": username,
             "email": email,
             "password": password
@@ -25,7 +25,9 @@ $(document).ready(() => {
             contentType: 'application/json',
             data: JSON.stringify(new_user),
             success: (response) => {
-
+                toastr.success('Hooray! You\'re in!', 'Success', {
+                    timeOut: 2000,
+                });
             }
         });
     });

@@ -1,0 +1,176 @@
+@font-face {
+    font-family: 'Balsamiq Sans';
+    src: url('../fonts/BalsamiqSans-Bold.ttf') format('truetype'),
+    url('../fonts/BalsamiqSans-BoldItalic.ttf') format('truetype'),
+    url('../fonts/BalsamiqSans-Italic.ttf') format('truetype'),
+    url('../fonts/BalsamiqSans-Regular.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'Balsamiq Sans';
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header {
+    border: 3px solid black;
+    border-radius: 5    px;
+    margin: 10px 10px;
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.logo {
+    float: left;
+    width: 200px;
+    margin-left: -50px;
+}
+
+nav {
+    float: right;
+}
+  
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 10px 0 10px;
+    margin-left: 10px;
+    padding: 10px 20px 10px 0;
+    position: relative;
+    border-right: 3px solid black;
+}
+
+nav li:last-child {
+    border-right: none;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: black;
+    float: right;
+    line-height: 55px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .logo {
+        position: relative;
+        left: 30px;
+        width: 200px;
+    }
+
+    .checkbtn{
+        display: block;
+        cursor: pointer;
+    }
+    
+    ul {
+        position: fixed;
+        width: 50%;
+        height: 50vh;
+        background: white;
+        top: 80px;
+        left: 100%;
+        text-align: right;
+        transform: translateX(100%);
+        transition-property: all;
+        transition-duration: 0.75s;
+        transition-timing-function: ease-in-out;
+    }
+    
+    nav ul li{
+        display: block;
+        margin-right: 20px;
+        border-right: none;
+    }
+    
+    nav ul li a{
+        font-size: 20px;
+    }
+
+    a:hover, a.active {
+        color: blue;
+    }
+    
+    #check:checked ~ nav ul{
+        left: 0;
+    }
+}
+
+footer {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    border-top: 2px solid black;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+footer div p {
+    margin: 0 10px;
+}
+
+a {
+    color: blue;
+}
+
+a:hover, a.active {
+    color: blue;
+}
+
+section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+}
+
+.profile-pic img {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+}
+
+.profile-details {
+margin-left: 20px;
+margin-top: 20px;
+}
+
+.profile-details h2 {
+font-size: 24px;
+margin: 0;
+}
+  
