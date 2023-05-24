@@ -84,7 +84,7 @@ Users will also have access to previous matches made by our application.
     - /api/users/<user_id>/partners
     GET: This route is used to retrieve a specific user’s partners
 
-    - /api/users/<user_id>/partners/<partners_id>
+    - /api/users/<user_id>/partners/<partner_id>
     GET: This route is used to retrieve a specific user’s partner
     POST: This route is used to submit a specific user’s partner
     DELETE: This route is used to delete a specific user’s partner
