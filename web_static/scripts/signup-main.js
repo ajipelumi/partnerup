@@ -21,7 +21,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/api/v1/users',
+            url: 'http://34.207.127.10:5000/api/v1/users',
             contentType: 'application/json',
             data: JSON.stringify(new_user),
             success: (response) => {
