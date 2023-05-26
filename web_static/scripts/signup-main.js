@@ -2,7 +2,8 @@ $(document).ready(() => {
     $('button').on('click', (event) => {
         event.preventDefault();
 
-        const username = $('input[name="username"]').val();
+	let username = $('input[name="username"]').val();
+        username = username.replace('@', '');
         const email = $('input[name="email"]').val();
         const password = $('input[name="password"]').val();
 
@@ -21,11 +22,21 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'POST',
-            url: 'http://34.207.127.10:5000/api/v1/users',
+            url: 'http://34.207.127.10/api/v1/users',
             contentType: 'application/json',
             data: JSON.stringify(new_user),
             success: (response) => {
                 toastr.success('Hooray! You\'re in!', 'Success', {
+                    timeOut: 2000,
+                });
+		window.location.replace('/profile');
+            },
+		error: (xhr) => {
+                let errorMessage = 'Oops! An error occurred while processing your request.';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+                toastr.error(errorMessage, {
                     timeOut: 2000,
                 });
             }

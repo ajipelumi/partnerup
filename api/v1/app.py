@@ -5,12 +5,10 @@ from models import storage
 from api.v1.views import app_views
 from flask_cors import CORS
 import os
-import secrets
 
 
 app = Flask(__name__)
-secret_key = secrets.token_hex(16)
-app.secret_key = secret_key
+app.secret_key = 'secret_key'
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
 

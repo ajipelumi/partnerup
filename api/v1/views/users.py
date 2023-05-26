@@ -20,19 +20,34 @@ def get_users():
 def create_user():
     """ Creates a User object. """
     json_data = request.get_json()
+    all_users = storage.all(User)
     if not json_data:
         abort(400, 'Not a JSON')
     if 'username' not in json_data.keys():
         abort(400, 'Missing username')
-    if 'email' not in json_data.keys():
-        abort(400, 'Missing email')
     if 'password' not in json_data.keys():
         abort(400, 'Missing password')
-    new_user = User(**json_data)
-    storage.new(new_user)
-    storage.save()
-    session['user'] = new_user.to_dict()
-    return redirect('/profile', code=302)
+    if 'email' not in json_data.keys():
+        for obj in all_users.values():
+            if obj.to_dict().get('username') == json_data['username']:
+                if obj.to_dict().get('password') == json_data['password']:
+                    session['user'] = obj.to_dict()
+                    return jsonify(obj.to_dict()), 201
+                else:
+                    error_message = 'Incorrect password'
+                    return jsonify(message=error_message), 400
+        error_message = 'Username does not exist'
+        return jsonify(message=error_message), 400
+    if 'email' in json_data.keys():
+        for obj in all_users.values():
+            if obj.to_dict().get('username') == json_data['username']:
+                error_message = 'Username already exists'
+                return jsonify(message=error_message), 400
+        new_user = User(**json_data)
+        storage.new(new_user)
+        storage.save()
+        session['user'] = new_user.to_dict()
+        return jsonify(new_user.to_dict()), 201
 
 
 @app_views.route('/users/<user_id>',
