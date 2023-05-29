@@ -1,3 +1,9 @@
 # Ignore pycache files
 models/__pycache__/
 *.pyc
+
+# Ignore static folder
+web_static/static/
+
+# Ignore profile pic
+web_static/images/profile-pic.JPG

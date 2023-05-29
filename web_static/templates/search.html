@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../styles/search-styles.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript" src=""></script>
+        <title>PartnerUp</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <a href="profile.html"><img src="../images/vertical_lockup.svg" alt="PartnerUp Vertical LockUp Logo" class="logo"></a>
+                <nav>
+                    <ul>
+                        <li><a href="profile.html">Home</a></li>
+                        <li><a href="">Find Partner</a></li>
+                        <li><a href="../index.html">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="search">
+            <form id="search-form">
+                <div class="form-row">
+                    <label for="projectOption">Project:</label>
+                    <select placeholder="Select Group Project" id="projectOption" name="projectOption" required>
+                        <option disabled selected>Select Group Project</option>
+                        <option value="project1">Project 1</option>
+                        <option value="project1">Project 1</option>
+                        <option value="project1">Project 1</option>
+                        <option value="project1">Project 1</option>
+                        <option value="project1">Project 1</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <label for="repoOption">Repository:</label>
+                    <select placeholder="Select Repositories" id="repoOption" name="repoOption" required>
+                        <option disabled selected>Select Repository</option>
+                        <option value="repo1">Repo 1</option>
+                        <option value="repo1">Repo 1</option>
+                        <option value="repo1">Repo 1</option>
+                        <option value="repo1">Repo 1</option>
+                        <option value="repo1">Repo 1</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="timeOption">Time Period:</label>
+                    <select placeholder="Select preferred day time" id="timeOption" name="timeOption" required>
+                        <option disabled selected>Select Preferred Time</option>
+                        <option value="day">Day</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+
+                <button type="submit">Find Partner</button>
+            </form>
+        </div>
+        <div class="previous-matches">
+            <a href="#">Previous Matches</a>
+        </div>
+        <footer>
+            <div>
+                <p>&copy; 2023 PartnerUp. All rights reserved.</p>
+                <p>Created by: <a href="https://github.com/ajipelumi">Ajisafe Oluwapelumi</a></p>
+            </div> 
+        </footer>
+    </body>
+</html>
