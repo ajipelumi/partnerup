@@ -33,46 +33,30 @@
                 <address class="columns w-row">
                     <div class="column">
                         <div class="white-wrapper">
-                            <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079.JPG" sizes="(max-width: 767px) 100vw, (max-width: 991px) 159px, 200px" srcset="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079-p-500.jpg 500w, https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079-p-800.jpg 800w, https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079-p-1080.jpg 1080w, https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079.JPG 1242w" alt="Profile Picture" class="circle-profile"/>
+                            <img src="{{ user_response.get('avatar_url') }}" alt="Profile Picture" class="circle-profile"/>
                             <div class="grey-rule"></div>
-                            <h3 class="full-name">Ajisafe Oluwapelumi</h3>
-                            <div class="username">@ajipelumi</div>
+                            <h3 class="full-name">{{ user_response.get('name') }}</h3>
+                            <div class="username">@{{ user_response.get('login') }}</div>
                             <div class="grey-rule"></div>
-                            <a href="#" class="social-icon-link w-inline-block">
-                                <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a7d5937a5e96def9dc03_icons8-github.svg" width="25" alt=""/>
+                            <a href="{{ user_response.get('html_url') }}" class="social-icon-link w-inline-block">
+                                <img src="../images/github-icon.svg" width="25" alt="GitHub Icon"/>
                             </a>
                         </div>
                     </div>
                     <div class="content-column">
                         <h3 class="heading">Top Repositories</h3>
                         <div class="top-repo-line"></div>
+                        {% for repo in repo_response %}
                         <div class="all-repos">
                             <h3 class="heading-2">
-                                <strong class="repos">alx-system_engineering-devop</strong>
+                                <strong class="repos">{{ repo.get('name') }}</strong>
                             </h3>
-                            <div class="text-block">project description</div>
-                            <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6471bb0036ce059b6595449d_icons8-refresh-90.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
-                            <div class="commits">32 commits</div>
+                            <div class="text-block">{{ repo.get('description') }}</div>
+                            <img src="../images/commit-icon.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
+                            <div class="commits">{{ get_commit_count(repo.get('commits_url')) }} commits</div>
                             <div class="repo-line"></div>
                         </div>
-                        <div class="all-repos">
-                            <h3 class="heading-2">
-                                <strong class="repos">alx-system_engineering-devop</strong>
-                            </h3>
-                            <div class="text-block">project description</div>
-                            <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6471bb0036ce059b6595449d_icons8-refresh-90.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
-                            <div class="commits">32 commits</div>
-                            <div class="repo-line"></div>
-                        </div>
-                        <div class="all-repos">
-                            <h3 class="heading-2">
-                                <strong class="repos">alx-system_engineering-devop</strong>
-                            </h3>
-                            <div class="text-block">project description</div>
-                            <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6471bb0036ce059b6595449d_icons8-refresh-90.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
-                            <div class="commits">32 commits</div>
-                            <div class="repo-line"></div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </address>
             </div>

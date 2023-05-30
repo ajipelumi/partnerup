@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
 from flask import Flask, render_template, session
+from helpers import get_commit_count
 from models import storage
 import requests
 import uuid
