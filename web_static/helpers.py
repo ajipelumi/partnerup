@@ -2,8 +2,8 @@
 import io
 import os
 import matplotlib.pyplot as plt
-from flask import url_for
 import requests
+import base64
 
 
 access_token = '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'
@@ -22,14 +22,13 @@ def get_all_commits(username, repo):
 
     while True:
         params = {'page': page, 'per_page': per_page}
-        response = requests.get(url, headers=headers, params=params)
-        response.raise_for_status()
+        response = make_github_api_request(url, params=params)
+        if response is None:
+            return None
+
         commits += response.json()
 
-        if not response.links:
-            break
-
-        if not response.links.get('next'):
+        if not response.links or not response.links.get('next'):
             break
 
         url = response.links['next']['url']
@@ -83,3 +82,12 @@ def plot_image(user, user_commit_data, partner_commit_data, selected_partner):
     buffer.seek(0)
     plot_bytes = base64.b64encode(buffer.read()).decode('utf-8')
     return plot_bytes
+
+
+def make_github_api_request(url, params=None):
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        return response
+    except requests.exceptions.RequestException:
+        return None
