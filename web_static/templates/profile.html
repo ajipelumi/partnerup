@@ -53,7 +53,7 @@
                             </h3>
                             <div class="text-block">{{ repo.get('description') }}</div>
                             <img src="../images/commit-icon.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
-                            <div class="commits">{{ get_commit_count(repo.get('commits_url')) }} commits</div>
+                            <div class="commits">{{ get_all_commits(user_response.get('login'), repo.get('name')) | length }} commits</div>
                             <div class="repo-line"></div>
                         </div>
                         {% endfor %}

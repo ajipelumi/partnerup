@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../styles/match-styles.css" rel="stylesheet">
+        <link href="../styles/match-styles.css?cache_id={{ cache_id }}" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -22,7 +22,7 @@
                 <nav>
                     <ul>
                         <li><a href="profile.html">Home</a></li>
-                        <li><a href="">Find Partner</a></li>
+                        <li><a href="search.html">Find Partner</a></li>
                         <li><a href="../index.html">Logout</a></li>
                     </ul>
                 </nav>
@@ -33,28 +33,24 @@
                 <address class="columns w-row">
                     <div class="column">
                         <div class="white-wrapper">
-                            <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079.JPG" sizes="(max-width: 767px) 100vw, (max-width: 991px) 159px, 200px" srcset="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079-p-500.jpg 500w, https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079-p-800.jpg 800w, https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079-p-1080.jpg 1080w, https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a49355598689d5e24ace_IMG-1079.JPG 1242w" alt="Profile Picture" class="circle-profile"/>
+                            <img src="{{ partner_response.get('avatar_url') }}" alt="Profile Picture" class="circle-profile"/>
                             <div class="grey-rule"></div>
-                            <h3 class="full-name">Ajisafe Oluwapelumi</h3>
-                            <div class="username">@ajipelumi</div>
+                            <h3 class="full-name">{{ partner_response.get('name') }}</h3>
+                            <div class="username">@{{ partner_response.get('login') }}</div>
                             <div class="grey-rule"></div>
-                            <a href="#" class="social-icon-link w-inline-block">
-                                <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6470a7d5937a5e96def9dc03_icons8-github.svg" width="25" alt=""/>
+                            <a href="{{ partner_response.get('html_url') }}" class="social-icon-link w-inline-block">
+                                <img src="../images/github-icon.svg" width="25" alt="GitHub Icon"/>
                             </a>
+                            <div class="previous-matches">
+                                <a href="#">See Previous Matches</a>
+                            </div>
                         </div>
                     </div>
                     <div class="content-column">
-                        <h3 class="heading">Repository</h3>
-                        <div class="top-repo-line"></div>
-                        <div class="all-repos">
-                            <h3 class="heading-2">
-                                <strong class="repos">alx-system_engineering-devop</strong>
-                            </h3>
-                            <div class="text-block">project description</div>
-                            <img src="https://uploads-ssl.webflow.com/6470a1e447ef0ebd825e7dbc/6471bb0036ce059b6595449d_icons8-refresh-90.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
-                            <div class="commits">32 commits</div>
-                            <div class="repo-line"></div>
-                        </div>
+                        <h2 class="heading">We found you a partner for {{ project }}</h2>
+                        <p>Here is how you compare:</p>
+                        <img src="{{ plot_image_url }}" alt="A Commit Comparison Graph" class="compare-chart"/>
+                        <p>Send <a href="mailto:{{ email }}">{{ partner_response.get('name') }}</a> a mail to connect</p>
                     </div>
                 </address>
             </div>

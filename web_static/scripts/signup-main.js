@@ -14,6 +14,31 @@ $(document).ready(() => {
           return;
         }
 
+        let new_partner = {
+            "username": username,
+            "email": email,
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://34.207.127.10/api/v1/partners',
+            contentType: 'application/json',
+            data: JSON.stringify(new_partner),
+            success: (response) => {
+                
+            },
+		    error: (xhr) => {
+                let errorMessage = 'Oops! An error occurred while processing your request.';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+                toastr.error(errorMessage, {
+                    timeOut: 2000,
+                });
+            }
+        });
+
+
         let new_user = {
             "username": username,
             "email": email,
@@ -29,9 +54,9 @@ $(document).ready(() => {
                 toastr.success('Hooray! You\'re in!', 'Success', {
                     timeOut: 2000,
                 });
-		window.location.replace('/profile');
+		    window.location.replace('/profile');
             },
-		error: (xhr) => {
+		    error: (xhr) => {
                 let errorMessage = 'Oops! An error occurred while processing your request.';
                 if (xhr.responseJSON && xhr.responseJSON.message) {
                     errorMessage = xhr.responseJSON.message;
