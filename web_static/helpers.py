@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import io
 import os
 import matplotlib.pyplot as plt
 from flask import url_for
@@ -50,7 +51,7 @@ def commits_during_night(commits):
 def process_commit_by_date(commits):
     """ Process commit counts by date. """
     commit_counts = {}
-    for commit in commits:
+    for commit in commits[:10]:
         date = commit['commit']['author']['date'][:10]
         if date not in commit_counts:
             commit_counts[date] = 0
@@ -77,6 +78,8 @@ def plot_image(user, user_commit_data, partner_commit_data, selected_partner):
     plt.ylabel('Number of Commits')
     plt.title('Commits per day')
     plt.grid(True)
-    plt.savefig('web_static/images/commits.png')
-    plot_image_url = url_for('static', filename='images/commits.png')
-    return plot_image_url
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    plot_bytes = base64.b64encode(buffer.read()).decode('utf-8')
+    return plot_bytes

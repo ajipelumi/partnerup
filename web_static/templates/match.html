@@ -49,7 +49,7 @@
                     <div class="content-column">
                         <h2 class="heading">We found you a partner for {{ project }}</h2>
                         <p>Here is how you compare:</p>
-                        <img src="{{ plot_image_url }}" alt="A Commit Comparison Graph" class="compare-chart"/>
+                        <img src="data:image/png;base64,{{ plot_image_url }}" alt="A Commit Comparison Graph" class="compare-chart"/>
                         <p>Send <a href="mailto:{{ email }}">{{ partner_response.get('name') }}</a> a mail to connect</p>
                     </div>
                 </address>

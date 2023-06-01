@@ -48,7 +48,7 @@ def profile_page():
                            get_all_commits=get_all_commits)
 
 
-@app.route('/match', strict_slashes=False)
+@app.route('/match', methods=['GET'])
 def match_page():
     """ Match users based on their GitHub repositories. """
     project = request.args.get('project')
@@ -64,10 +64,11 @@ def match_page():
         return render_template('error.html', error_message=error_message)
     user_commit_count = len(user_commit_data)
 
-    all_partners = storage.get(Partner)
-    random_partners = random.sample(all_partners, 3)
+    all_partners = storage.all(Partner).values()
+    random_partners = random.sample(list(all_partners), 2)
 
     for partner in random_partners:
+        partner = partner.to_dict()
         if user.get('username') == partner.get('username'):
             continue
 
@@ -93,15 +94,12 @@ def match_page():
                 'commit_count': partner_commit_count,
             })
 
+    selected_partner = {}
     if matching_partners:
         sorted_partners = sorted(matching_partners, key=lambda partner:
                                  abs(partner['commit_count'] -
                                      user_commit_count))
         selected_partner = sorted_partners[0]
-
-    current_user = storage.get(User, user.get('id'))
-    current_user.partners.append(selected_partner)
-    storage.save()
 
     partner_commit_data = get_all_commits(selected_partner.get('username'),
                                           repo)
@@ -118,11 +116,18 @@ def match_page():
     plot_image_url = plot_image(user, user_commit_data, partner_commit_data,
                                 selected_partner)
 
+    email = selected_partner.get('email')
+
+    current_user = storage.get(User, user.get('id'))
+    selected_partner = storage.get(Partner, selected_partner.get('id'))
+    current_user.partners.append(selected_partner)
+    storage.save()
+
     return render_template('match.html',
                            project=project,
                            partner_response=partner_response,
                            plot_image_url=plot_image_url,
-                           email=selected_partner.get('email'),
+                           email=email,
                            cache_id=uuid.uuid4()
                            )
 
