@@ -27,12 +27,12 @@ def profile_page():
     url = f'https://api.github.com/users/{username}'
     user_response = make_github_api_request(url)
     if user_response is None or 'repos_url' not in user_response:
-        error_message = "Error: Failed to retrieve data from the GitHub."
+        error_message = "Error: Failed to retrieve user data from the GitHub."
         return render_template('error.html', error_message=error_message)
 
     repo_response = make_github_api_request(user_response.get('repos_url'))
     if repo_response is None:
-        error_message = "Error: Failed to retrieve data from the GitHub."
+        error_message = "Error: Failed to retrieve repo data from the GitHub."
         return render_template('error.html', error_message=error_message)
 
     return render_template('profile.html',
