@@ -34,7 +34,7 @@ def profile_page():
         error_message = "Error: Failed to retrieve data from GitHub."
         return render_template('error.html', error_message=error_message)
 
-    repo_response = get_repos_from_github(user_response.get('repos_url'))
+    repo_response = get_repos_from_github(username)
     if repo_response is None:
         error_message = "Error: Failed to retrieve data from GitHub."
         return render_template('error.html', error_message=error_message)
@@ -141,10 +141,11 @@ def get_user_from_github(username):
         return None
 
 
-def get_repos_from_github(repos_url):
+def get_repos_from_github(username):
     """ Get all repositories for a particular user. """
     try:
-        repos = github.get_repos(url=repos_url)
+        user = github.get_user(username)
+        repos = user.get_repos()
         repo_data = []
         for repo in repos:
             repo_data.append(repo.raw_data)
