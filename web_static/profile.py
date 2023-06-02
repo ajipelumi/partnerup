@@ -1,16 +1,20 @@
 #!/usr/bin/python3
-""" Starts a Flash Web Application """
+""" Starts a Flask Web Application """
+import base64
 from flask import Flask, render_template, session, request
-from web_static.helpers import *
+import io
 from models import storage
 from models.partner import Partner
 from models.user import User
+import matplotlib.pyplot as plt
+from github import Github
 import random
 import uuid
 
-
 app = Flask(__name__)
 app.secret_key = 'secret_key'
+access_token = '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'
+github = Github(access_token)
 
 
 @app.teardown_appcontext
@@ -18,21 +22,21 @@ def close_db(exception):
     """ Remove the current SQLAlchemy Session. """
     storage.close()
 
+
 @app.route('/profile', strict_slashes=False)
 def profile_page():
     """ Create a particular user's page. """
     user = session.get('user')
     username = user.get('username')
 
-    url = f'https://api.github.com/users/{username}'
-    user_response = make_github_api_request(url)
+    user_response = get_user_from_github(username)
     if user_response is None or 'repos_url' not in user_response:
-        error_message = "Error: Failed to retrieve user data from the GitHub."
+        error_message = "Error: Failed to retrieve data from GitHub."
         return render_template('error.html', error_message=error_message)
 
-    repo_response = make_github_api_request(user_response.get('repos_url'))
+    repo_response = get_repos_from_github(username)
     if repo_response is None:
-        error_message = "Error: Failed to retrieve repo data from the GitHub."
+        error_message = "Error: Failed to retrieve data from GitHub."
         return render_template('error.html', error_message=error_message)
 
     return render_template('profile.html',
@@ -55,7 +59,7 @@ def match_page():
     username = user.get('username')
     user_commit_data = get_all_commits(username, repo)
     if user_commit_data is None:
-        error_message = "Error: Failed to retrieve data from the GitHub."
+        error_message = "Error: Failed to retrieve data from GitHub."
         return render_template('error.html', error_message=error_message)
     user_commit_count = len(user_commit_data)
 
@@ -69,7 +73,7 @@ def match_page():
 
         partner_commit_data = get_all_commits(partner.get('username'), repo)
         if partner_commit_data is None:
-            error_message = "Error: Failed to retrieve data from the GitHub."
+            error_message = "Error: Failed to retrieve data from GitHub."
             return render_template('error.html', error_message=error_message)
         partner_commit_count = len(partner_commit_data)
 
@@ -94,13 +98,12 @@ def match_page():
 
         partner_commit_data = get_all_commits(selected_partner.get('username'), repo)
         if partner_commit_data is None:
-            error_message = "Error: Failed to retrieve data from the GitHub."
+            error_message = "Error: Failed to retrieve data from GitHub."
             return render_template('error.html', error_message=error_message)
 
-        url = f'https://api.github.com/users/{selected_partner.get("username")}'
-        partner_response = make_github_api_request(url)
+        partner_response = get_user_from_github(selected_partner.get('username'))
         if partner_response is None:
-            error_message = "Error: Failed to retrieve data from the GitHub."
+            error_message = "Error: Failed to retrieve data from GitHub."
             return render_template('error.html', error_message=error_message)
 
         plot_image_url = plot_image(user, user_commit_data, partner_commit_data, selected_partner)
@@ -126,6 +129,91 @@ def match_page():
                                email=None,
                                cache_id=uuid.uuid4()
                                )
+
+
+def get_user_from_github(username):
+    """ Get a particular user's data from GitHub. """
+    try:
+        user = github.get_user(username)
+        return user.raw_data
+    except Exception as e:
+        print(f"Error: Failed to retrieve user data from GitHub. {e}")
+        return None
+
+
+def get_repos_from_github(username):
+    """ Get all repositories for a particular user. """
+    try:
+        user = github.get_user(username)
+        repos = user.get_repos()
+        repo_data = []
+        for repo in repos:
+            repo_data.append(repo.raw_data)
+        return repo_data
+    except Exception as e:
+        print(f"Error: Failed to retrieve repository data from GitHub. {e}")
+        return None
+
+
+def get_all_commits(username, repo):
+    """ Get all commits for a particular user and repository. """
+    try:
+        repository = github.get_repo(f"{username}/{repo}")
+        commits = repository.get_commits()
+        commit_data = []
+        for commit in commits:
+            commit_data.append(commit.raw_data)
+        return commit_data
+    except Exception as e:
+        print(f"Error: Failed to retrieve commit data from GitHub. {e}")
+        return None
+
+
+def commits_during_night(commits):
+    """ Check if commits are made at night. """
+    for commit in commits:
+        commit_time = commit.get('commit').get('author').get('date')
+        commit_hour = int(commit_time[11:13])
+        if commit_hour < 6 or commit_hour > 18:
+            return True
+    return False
+
+
+def process_commit_by_date(commits):
+    """ Process commit counts by date. """
+    commit_counts = {}
+    for commit in commits[:10]:
+        date = commit['commit']['author']['date'][:10]
+        if date not in commit_counts:
+            commit_counts[date] = 0
+        commit_counts[date] += 1
+    return commit_counts
+
+
+def plot_image(user, user_commit_data, partner_commit_data, selected_partner):
+    """ Visualize commit history with matplotlib. """
+    plt.figure(figsize=(20, 10))
+    user_commit_counts = process_commit_by_date(user_commit_data)
+    user_commit_dates = list(user_commit_counts.keys())
+    user_commit_values = list(user_commit_counts.values())
+    plt.plot(user_commit_dates, user_commit_values,
+             label=f'{user.get("username")}')
+
+    partner_commit_counts = process_commit_by_date(partner_commit_data)
+    partner_commit_dates = list(partner_commit_counts.keys())
+    partner_commit_values = list(partner_commit_counts.values())
+    plt.plot(partner_commit_dates, partner_commit_values,
+             label=f'{selected_partner.get("username")}')
+    plt.legend()
+    plt.xlabel('Date')
+    plt.ylabel('Number of Commits')
+    plt.title('Commits per day')
+    plt.grid(True)
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    plot_bytes = base64.b64encode(buffer.read()).decode('utf-8')
+    return plot_bytes
 
 
 if __name__ == "__main__":
