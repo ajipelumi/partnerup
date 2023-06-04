@@ -4,10 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../styles/profile-styles.css?cache_id={{ cache_id }}" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script type="text/javascript" src=""></script>
         <title>PartnerUp</title>
     </head>
@@ -18,10 +16,10 @@
                 <label for="check" class="checkbtn">
                     <i class="fas fa-bars"></i>
                 </label>
-                <a href="profile.html"><img src="../images/vertical_lockup.svg" alt="PartnerUp Vertical LockUp Logo" class="logo"></a>
+                <a href="#"><img src="../images/vertical_lockup.svg" alt="PartnerUp Vertical LockUp Logo" class="logo"></a>
                 <nav>
                     <ul>
-                        <li><a href="profile.html">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="search.html">Find Partner</a></li>
                         <li><a href="../index.html">Logout</a></li>
                     </ul>
@@ -52,8 +50,6 @@
                                 <strong class="repos">{{ repo.get('name') }}</strong>
                             </h3>
                             <div class="text-block">{{ repo.get('description') }}</div>
-                            <img src="../images/commit-icon.svg" loading="lazy" width="30" alt="" class="commit-icon"/>
-                            <div class="commits">{{ get_all_commits(user_response.get('login'), repo.get('name')) | length }} commits</div>
                             <div class="repo-line"></div>
                         </div>
                         {% endfor %}

@@ -33,17 +33,31 @@ def get_repos_from_github(username):
         return None
 
 
-def get_all_commits(username, repo):
-    """ Get all commits for a particular user and repository. """
+def get_all_commits(username, repo, max_commits=50):
+    """ Get up to 'max_commits' commits for a particular user and repository. """
     try:
         repository = github.get_repo(f"{username}/{repo}")
-        commits = repository.get_commits()
+        commits = repository.get_commits()[:max_commits]
         commit_data = []
         for commit in commits:
             commit_data.append(commit.raw_data)
         return commit_data
     except Exception as e:
         print(f"Error: Failed to retrieve commit data from GitHub. {e}")
+        return None
+
+
+def get_total_commit_count(username, repo):
+    """ Get the total number of commits for a particular user and repository. """
+    try:
+        repository = github.get_repo(f"{username}/{repo}")
+        commits = repository.get_commits()
+        total_commit_count = 0
+        for _ in commits:
+            total_commit_count += 1
+        return total_commit_count
+    except Exception as e:
+        print(f"Error: Failed to retrieve commit count from GitHub. {e}")
         return None
 
 
@@ -60,7 +74,7 @@ def commits_during_night(commits):
 def process_commit_by_date(commits):
     """ Process commit counts by date. """
     commit_counts = {}
-    for commit in commits[:10]:
+    for commit in commits:
         date = commit['commit']['author']['date'][:10]
         if date not in commit_counts:
             commit_counts[date] = 0

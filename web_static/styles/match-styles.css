@@ -229,29 +229,18 @@ address[class="columns w-row"] {
 .content-column {
     position: relative;
     width: 70%;
-    left: 10%;
-    bottom: 450px;
+    left: 5%;
+    bottom: 430px;
     margin-top: 0px;
-    padding-left: 20px;
 }
 
 .heading {
-    margin-top: 21px;
-    font-size: 30px;
-}
-
-.all-repos {
-    margin-top: 40px;
-}
-
-.all-repos .heading-2 {
-    width: 400px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: 24px;
 }
 
 .compare-chart {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    width: 80%;
 }
 
 .previous-matches {

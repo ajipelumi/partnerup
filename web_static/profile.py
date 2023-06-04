@@ -38,11 +38,10 @@ def profile_page():
     return render_template('profile.html',
                            user_response=user_response,
                            repo_response=repo_response,
-                           cache_id=uuid.uuid4(),
-                           get_all_commits=get_all_commits)
+                           cache_id=uuid.uuid4())
 
 
-@app.route('/match', methods=['GET'])
+@app.route('/match', strict_slashes=False)
 def match_page():
     """ Match users based on their GitHub repositories. """
     project = request.args.get('project')
@@ -57,10 +56,10 @@ def match_page():
     if user_commit_data is None:
         error_message = "Error: Failed to retrieve data from GitHub."
         return render_template('error.html', error_message=error_message)
-    user_commit_count = len(user_commit_data)
+    user_commit_count = get_total_commit_count(username, repo)
 
     all_partners = storage.all(Partner).values()
-    random_partners = random.sample(list(all_partners), 2)
+    random_partners = random.sample(list(all_partners), 3)
 
     for partner in random_partners:
         partner = partner.to_dict()
@@ -71,7 +70,7 @@ def match_page():
         if partner_commit_data is None:
             error_message = "Error: Failed to retrieve data from GitHub."
             return render_template('error.html', error_message=error_message)
-        partner_commit_count = len(partner_commit_data)
+        partner_commit_count = get_total_commit_count(partner.get('username'), repo)
 
         if time == 'night' and commits_during_night(partner_commit_data):
             matching_partners.append({
