@@ -126,5 +126,23 @@ def match_page():
                                )
 
 
+@app.route('/previous-matches', strict_slashes=False)
+def previous_matches_page():
+    """ Display a user's previous matches. """
+    user = session.get('user')
+    partners = []
+
+    current_user = storage.get(User, user.get('id'))
+    all_partners = current_user.get('partners')
+
+    for partner in all_partners:
+        partner = storage.get(Partner, partner.get('id'))
+        partners.append(partner.to_dict())
+
+    return render_template('previous-matches.html',
+                           partners=partners,
+                           cache_id=uuid.uuid4())
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001)
