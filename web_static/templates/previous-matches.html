@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../styles/profile-styles.css?cache_id={{ cache_id }}" rel="stylesheet">
+        <link href="../styles/previous-matches.css?cache_id={{ cache_id }}" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../scripts/profile.js"></script>
+        <script type="text/javascript" src="../scripts/previous-matches.js"></script>
         <title>PartnerUp</title>
     </head>
     <body>
@@ -29,28 +29,16 @@
         <div>
             <div class="w-container">
                 <address class="columns w-row">
-                    <div class="column">
-                        <div class="white-wrapper">
-                            <img src="{{ user_response.get('avatar_url') }}" alt="Profile Picture" class="circle-profile"/>
-                            <div class="grey-rule"></div>
-                            <h3 class="full-name">{{ user_response.get('name') }}</h3>
-                            <div class="username">@{{ user_response.get('login') }}</div>
-                            <div class="grey-rule"></div>
-                            <a href="{{ user_response.get('html_url') }}" class="social-icon-link w-inline-block">
-                                <img src="../images/github-icon.svg" width="25" alt="GitHub Icon"/>
-                            </a>
-                        </div>
-                    </div>
                     <div class="content-column">
-                        <h3 class="heading">Repositories</h3>
-                        <div class="top-repo-line"></div>
-                        {% for repo in repo_response %}
-                        <div class="all-repos">
+                        <h3 class="heading">Previous Matches</h3>
+                        <div class="top-line"></div>
+                        {% for partner in partners %}
+                        <div class="all-partners">
                             <h3 class="heading-2">
-                                <strong class="repos">{{ repo.get('name') }}</strong>
+                                <strong class="partners">@{{ partner.get('username') }}</strong>
                             </h3>
-                            <div class="text-block">{{ repo.get('description') }}</div>
-                            <div class="repo-line"></div>
+                            <div class="text-block"><a href="mailto:{{ partner.get('email') }}">{{ partner.get('email') }}</a></div>
+                            <div class="partner-line"></div>
                         </div>
                         {% endfor %}
                     </div>
