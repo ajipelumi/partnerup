@@ -162,8 +162,7 @@ address[class="columns w-row"] {
 .content-column {
     position: relative;
     width: 70%;
-    left: 320px;
-    bottom: 400px;
+    left: 20px;
     margin-top: 0px;
     padding-left: 20px;
 }

@@ -133,10 +133,10 @@ def previous_matches_page():
     partners = []
 
     current_user = storage.get(User, user.get('id'))
-    all_partners = current_user.get('partners')
+    all_partners = current_user.partners
 
     for partner in all_partners:
-        partner = storage.get(Partner, partner.get('id'))
+        partner = storage.get(Partner, partner.id)
         partners.append(partner.to_dict())
 
     return render_template('previous-matches.html',
