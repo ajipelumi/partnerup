@@ -24,6 +24,7 @@ def profile_page():
     """ Create a particular user's page. """
     user = session.get('user')
     username = user.get('username')
+    cohort_number = user.get('cohort_number')
 
     user_response = get_user_from_github(username)
     if user_response is None or 'repos_url' not in user_response:
@@ -36,6 +37,7 @@ def profile_page():
         return render_template('error.html', error_message=error_message)
 
     return render_template('profile.html',
+                           cohort_number=cohort_number,
                            user_response=user_response,
                            repo_response=repo_response,
                            cache_id=uuid.uuid4())
@@ -52,6 +54,7 @@ def match_page():
 
     user = session.get('user')
     username = user.get('username')
+    cohort_number = user.get('cohort_number')
     user_commit_data = get_all_commits(username, repo)
     if user_commit_data is None:
         error_message = "Error: Failed to retrieve data from GitHub."
@@ -59,71 +62,64 @@ def match_page():
     user_commit_count = get_total_commit_count(username, repo)
 
     all_partners = storage.all(Partner).values()
-    random_partners = random.sample(list(all_partners), 3)
+    
+    while len(matching_partners) == 0:
+        random_partners = random.sample(list(all_partners), 3)
 
-    for partner in random_partners:
-        partner = partner.to_dict()
-        if username == partner.get('username'):
-            continue
+        for partner in random_partners:
+            partner = partner.to_dict()
+            if username == partner.get('username') or cohort_number != partner.get('cohort_number'):
+                continue
 
-        partner_commit_data = get_all_commits(partner.get('username'), repo)
-        if partner_commit_data is None:
-            error_message = "Error: Failed to retrieve data from GitHub."
-            return render_template('error.html', error_message=error_message)
-        partner_commit_count = get_total_commit_count(partner.get('username'), repo)
+            partner_commit_data = get_all_commits(partner.get('username'), repo)
+            if partner_commit_data is None:
+                error_message = "Error: Failed to retrieve data from GitHub."
+                return render_template('error.html', error_message=error_message)
+            partner_commit_count = get_total_commit_count(partner.get('username'), repo)
 
-        if time == 'night' and commits_during_night(partner_commit_data):
-            matching_partners.append({
-                'username': partner.get('username'),
-                'id': partner.get('id'),
-                'email': partner.get('email'),
-                'commit_count': partner_commit_count,
-            })
-        else:
-            matching_partners.append({
-                'username': partner.get('username'),
-                'id': partner.get('id'),
-                'email': partner.get('email'),
-                'commit_count': partner_commit_count,
-            })
+            if time == 'night' and commits_during_night(partner_commit_data):
+                matching_partners.append({
+                    'username': partner.get('username'),
+                    'id': partner.get('id'),
+                    'email': partner.get('email'),
+                    'commit_count': partner_commit_count,
+                })
+            else:
+                matching_partners.append({
+                    'username': partner.get('username'),
+                    'id': partner.get('id'),
+                    'email': partner.get('email'),
+                    'commit_count': partner_commit_count,
+                })
 
-    if matching_partners:
-        sorted_partners = sorted(matching_partners, key=lambda partner: abs(partner['commit_count'] - user_commit_count))
-        selected_partner = sorted_partners[0]
+    sorted_partners = sorted(matching_partners, key=lambda partner: abs(partner['commit_count'] - user_commit_count))
+    selected_partner = sorted_partners[0]
 
-        partner_commit_data = get_all_commits(selected_partner.get('username'), repo)
-        if partner_commit_data is None:
-            error_message = "Error: Failed to retrieve data from GitHub."
-            return render_template('error.html', error_message=error_message)
+    partner_commit_data = get_all_commits(selected_partner.get('username'), repo)
+    if partner_commit_data is None:
+        error_message = "Error: Failed to retrieve data from GitHub."
+        return render_template('error.html', error_message=error_message)
 
-        partner_response = get_user_from_github(selected_partner.get('username'))
-        if partner_response is None:
-            error_message = "Error: Failed to retrieve data from GitHub."
-            return render_template('error.html', error_message=error_message)
+    partner_response = get_user_from_github(selected_partner.get('username'))
+    if partner_response is None:
+        error_message = "Error: Failed to retrieve data from GitHub."
+        return render_template('error.html', error_message=error_message)
 
-        plot_image_url = plot_image(user, user_commit_data, partner_commit_data, selected_partner)
-        email = selected_partner.get('email')
+    plot_image_url = plot_image(user, user_commit_data, partner_commit_data, selected_partner)
+    email = selected_partner.get('email')
 
-        current_user = storage.get(User, user.get('id'))
-        selected_partner = storage.get(Partner, selected_partner.get('id'))
-        current_user.partners.append(selected_partner)
-        storage.save()
+    current_user = storage.get(User, user.get('id'))
+    selected_partner = storage.get(Partner, selected_partner.get('id'))
+    current_user.partners.append(selected_partner)
+    storage.save()
 
-        return render_template('match.html',
-                               project=project,
-                               partner_response=partner_response,
-                               plot_image_url=plot_image_url,
-                               email=email,
-                               cache_id=uuid.uuid4()
-                               )
-    else:
-        return render_template('match.html',
-                               project=project,
-                               partner_response=None,
-                               plot_image_url=None,
-                               email=None,
-                               cache_id=uuid.uuid4()
-                               )
+    return render_template('match.html',
+                           project=project,
+                           partner_response=partner_response,
+                           plot_image_url=plot_image_url,
+                           email=email,
+                           cache_id=uuid.uuid4()
+                           )
 
 
 @app.route('/previous-matches', strict_slashes=False)

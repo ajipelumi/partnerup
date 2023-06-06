@@ -2,13 +2,14 @@ $(document).ready(() => {
     $('button').on('click', (event) => {
         event.preventDefault();
 
-	let username = $('input[name="username"]').val();
+	    let username = $('input[name="username"]').val();
         username = username.replace('@', '');
+        const cohort_number = $('input[name="cohort_number"]').val();
         const email = $('input[name="email"]').val();
         const password = $('input[name="password"]').val();
 
-        if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
-            toastr.error('Oops!, You forgot to enter your username, email and password!', {
+        if (username.trim() === '' || cohort_number === '' || email.trim() === '' || password.trim() === '') {
+            toastr.error('Oops!, You forgot to enter your username, cohort, email and password!', {
                 timeOut: 2000,
             });
           return;
@@ -17,6 +18,7 @@ $(document).ready(() => {
         let new_partner = {
             "username": username,
             "email": email,
+            "cohort_number": cohort_number
         }
 
         $.ajax({
@@ -42,7 +44,8 @@ $(document).ready(() => {
         let new_user = {
             "username": username,
             "email": email,
-            "password": password
+            "password": password,
+            "cohort_number": cohort_number
         };
 
         $.ajax({

@@ -211,6 +211,7 @@ address[class="columns w-row"] {
 
 .username {
     color: hsla(0, 0.00%, 0.00%, 1.00);
+    margin-bottom: 10px;
 }
 
 .social-icon-link {
