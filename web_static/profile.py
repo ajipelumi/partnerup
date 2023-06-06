@@ -54,7 +54,7 @@ def match_page():
 
     user = session.get('user')
     username = user.get('username')
-    cohort_number = user.get('cohort_number')
+    cohort_number = int(user.get('cohort_number'))
     user_commit_data = get_all_commits(username, repo)
     if user_commit_data is None:
         error_message = "Error: Failed to retrieve data from GitHub."
@@ -62,13 +62,17 @@ def match_page():
     user_commit_count = get_total_commit_count(username, repo)
 
     all_partners = storage.all(Partner).values()
-    
+
     while len(matching_partners) == 0:
         random_partners = random.sample(list(all_partners), 3)
 
         for partner in random_partners:
             partner = partner.to_dict()
-            if username == partner.get('username') or cohort_number != partner.get('cohort_number'):
+
+            if username == partner.get('username'):
+                continue
+
+            if cohort_number != partner.get('cohort_number'):
                 continue
 
             partner_commit_data = get_all_commits(partner.get('username'), repo)

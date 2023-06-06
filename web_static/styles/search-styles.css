@@ -194,6 +194,5 @@ button[type="submit"]:hover {
 
 .previous-matches {
     margin-top: 40px;
-    position: relative;
-    left: 80%;
+    margin-left: 5%;
 }
