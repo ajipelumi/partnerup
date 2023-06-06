@@ -27,6 +27,14 @@ class TestPartner(unittest.TestCase):
         self.assertTrue(hasattr(partner, "username"))
         self.assertEqual(partner.username, None)
 
+    def test_cohort_number_attr(self):
+        """
+        Test that partner has attr cohort_number, and it's an empty string.
+        """
+        partner = Partner()
+        self.assertTrue(hasattr(partner, "cohort_number"))
+        self.assertEqual(partner.cohort_number, None)
+
     def test_to_dict_creates_dict(self):
         """ Test to_dict method creates a dictionary with proper attrs. """
         u = Partner()

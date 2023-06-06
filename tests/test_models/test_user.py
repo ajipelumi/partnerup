@@ -33,6 +33,14 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(user, "username"))
         self.assertEqual(user.username, None)
 
+    def test_cohort_number_attr(self):
+        """
+        Test that User has attr cohort_number, and it's an empty string.
+        """
+        user = User()
+        self.assertTrue(hasattr(user, "cohort_number"))
+        self.assertEqual(user.cohort_number, None)
+
     def test_to_dict_creates_dict(self):
         """ Test to_dict method creates a dictionary with proper attrs. """
         u = User()
