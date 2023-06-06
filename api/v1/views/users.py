@@ -6,16 +6,6 @@ from models.user import User
 from flask import jsonify, abort, request, redirect, session
 
 
-@app_views.route('/users', methods=['GET'], strict_slashes=False)
-def get_users():
-    """ Retrieves the list of all User objects. """
-    users = []
-    all_users = storage.all(User)
-    for obj in all_users.values():
-        users.append(obj.to_dict())
-    return jsonify(users)
-
-
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def create_user():
     """ Creates a User object. """
