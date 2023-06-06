@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ This module defines the class Partner. """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Integer
 
 
 class Partner(BaseModel, Base):
@@ -9,6 +9,7 @@ class Partner(BaseModel, Base):
     __tablename__ = 'partners'
     username = Column(String(128), nullable=False)
     email = Column(String(128), nullable=False)
+    cohort_number = Column(Integer, nullable=False)
 
     def __init__(self, *args, **kwargs):
         """ Initializes partner. """

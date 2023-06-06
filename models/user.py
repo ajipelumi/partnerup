@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ This module defines the class User. """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey, Table
+from sqlalchemy import Column, String, ForeignKey, Table, Integer
 from sqlalchemy.orm import relationship
 
 
@@ -22,6 +22,7 @@ class User(BaseModel, Base):
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     username = Column(String(128), nullable=False)
+    cohort_number = Column(Integer, nullable=False)
     partners = relationship('Partner', secondary=user_partner,
                             viewonly=False)
 
