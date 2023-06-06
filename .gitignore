@@ -7,3 +7,6 @@ web_static/static/
 
 # Ignore profile pic
 web_static/images/profile-pic.JPG
+
+# Ignore environment variables
+.env

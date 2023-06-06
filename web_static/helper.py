@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 import base64
+from dotenv import dotenv_values
 from github import Github
 import io
 import matplotlib.pyplot as plt
+import os
 
 
-access_token = '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'
+dotenv_path = os.path.join(os.path.dirname(__file__), '../.env')
+dotenv_values(dotenv_path)
+access_token = os.getenv('ACCESS_TOKEN')
 github = Github(access_token)
 
 
@@ -14,8 +18,7 @@ def get_user_from_github(username):
     try:
         user = github.get_user(username)
         return user.raw_data
-    except Exception as e:
-        print(f"Error: Failed to retrieve user data from GitHub. {e}")
+    except Exception:
         return None
 
 
@@ -28,8 +31,7 @@ def get_repos_from_github(username):
         for repo in repos:
             repo_data.append(repo.raw_data)
         return repo_data
-    except Exception as e:
-        print(f"Error: Failed to retrieve repository data from GitHub. {e}")
+    except Exception:
         return None
 
 
@@ -42,8 +44,7 @@ def get_all_commits(username, repo, max_commits=50):
         for commit in commits:
             commit_data.append(commit.raw_data)
         return commit_data
-    except Exception as e:
-        print(f"Error: Failed to retrieve commit data from GitHub. {e}")
+    except Exception:
         return None
 
 
@@ -56,8 +57,7 @@ def get_total_commit_count(username, repo):
         for _ in commits:
             total_commit_count += 1
         return total_commit_count
-    except Exception as e:
-        print(f"Error: Failed to retrieve commit count from GitHub. {e}")
+    except Exception:
         return None
 
 
