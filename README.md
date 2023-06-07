@@ -13,7 +13,7 @@
 - [Acknowledgement](#acknowledgement)
 
 ## About PartnerUp 🖋️
-**[PartnerUp](https://partnerup.ddnsfree.com)** is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
+**[PartnerUp](https://partnerup.pelumi.tech)** is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
 We understand that collaborating on projects can be a daunting task, with students often struggling to find compatible partners who share their coding style and work ethic.
 This can lead to frustration, unproductive experiences, and subpar project outcomes.
 
@@ -52,7 +52,7 @@ Here is a GIF demonstrating the usage of PartnerUp:
 
 <img src="assets/partnerup_gif.gif" alt="PartnerUp Web Demo" width="600">
 
-[Webpage](https://partnerup.ddnsfree.com)
+[Webpage](https://partnerup.pelumi.tech)
 
 ## Technologies 🧑‍💻
 - **Libraries**
