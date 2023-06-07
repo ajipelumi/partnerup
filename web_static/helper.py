@@ -4,12 +4,10 @@ from dotenv import dotenv_values
 from github import Github
 import io
 import matplotlib.pyplot as plt
-import os
 
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '../.env')
-dotenv_values(dotenv_path)
-access_token = os.getenv('ACCESS_TOKEN')
+config = dotenv_values(".env")
+access_token = config.get('ACCESS_TOKEN')
 github = Github(access_token)
 
 
@@ -35,7 +33,7 @@ def get_repos_from_github(username):
         return None
 
 
-def get_all_commits(username, repo, max_commits=50):
+def get_all_commits(username, repo, max_commits=30):
     """ Get up to 'max_commits' commits for a particular user and repository. """
     try:
         repository = github.get_repo(f"{username}/{repo}")
