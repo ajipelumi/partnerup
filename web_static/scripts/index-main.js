@@ -20,7 +20,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'POST',
-            url: 'http://18.215.160.38/api/v1/users',
+            url: '/api/v1/users',
             contentType: 'application/json',
             data: JSON.stringify(user),
             success: (response) => {

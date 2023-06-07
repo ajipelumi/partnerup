@@ -23,7 +23,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'POST',
-            url: 'http://18.215.160.38/api/v1/partners',
+            url: '/api/v1/partners',
             contentType: 'application/json',
             data: JSON.stringify(new_partner),
             success: (response) => {
@@ -50,7 +50,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'POST',
-            url: 'http://18.215.160.38/api/v1/users',
+            url: '/api/v1/users',
             contentType: 'application/json',
             data: JSON.stringify(new_user),
             success: (response) => {

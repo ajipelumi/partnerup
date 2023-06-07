@@ -1,0 +1,20 @@
+# Enables gunicorn to start profile on boot
+
+[Unit]
+Description=Launch User profile for PartnerUp
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/partnerup
+Environment="PARTNERUP_MYSQL_USER=partnerup_dev"
+Environment="PARTNERUP_MYSQL_PWD=partnerup_dev_pwd"
+Environment="PARTNERUP_MYSQL_HOST=localhost"
+Environment="PARTNERUP_MYSQL_DB=partnerup_dev_db"
+ExecStart=/usr/local/bin/gunicorn --bind :5001 --workers 3 --timeout 60 web_static.profile:app
+StandardError=file:/tmp/profile-error.log
+StandardOutput=file:/tmp/profile-access.log
+
+[Install]
+WantedBy=multi-user.target

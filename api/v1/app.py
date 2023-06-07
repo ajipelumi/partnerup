@@ -9,7 +9,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
-cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.register_blueprint(app_views)
 
 

@@ -1,0 +1,20 @@
+# Enables gunicorn to start api on boot
+
+[Unit]
+Description=Launch API for PartnerUp
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/partnerup
+Environment="PARTNERUP_MYSQL_USER=partnerup_dev"
+Environment="PARTNERUP_MYSQL_PWD=partnerup_dev_pwd"
+Environment="PARTNERUP_MYSQL_HOST=localhost"
+Environment="PARTNERUP_MYSQL_DB=partnerup_dev_db"
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind :5000 api.v1.app:app
+StandardError=file:/tmp/api-error.log
+StandardOutput=file:/tmp/api-access.log
+
+[Install]
+WantedBy=multi-user.target
