@@ -3,15 +3,17 @@
 ## Table of Content
 - [About PartnerUp](#about-partnerup)
 - [Getting Started](#getting-started)
+- [Demo](#demo)
 - [Technologies](#technologies)
 - [APIs and Methods](#apis-and-methods)
 - [Future Features](#future-features)
+- [Known Bugs](#known-bugs)
 - [Blog Post](#blog-post)
 - [Authors](#authors)
 - [Acknowledgement](#acknowledgement)
 
 ## About PartnerUp
-**PartnerUp** is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
+**[PartnerUp](https://partnerup.ddnsfree.com)** is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
 We understand that collaborating on projects can be a daunting task, with students often struggling to find compatible partners who share their coding style and work ethic.
 This can lead to frustration, unproductive experiences, and subpar project outcomes.
 
@@ -44,6 +46,13 @@ Our application then analyzes coding styles, commits, and repositories to filter
 <img src="assets/previous_matches.png" alt="PartnerUp Login Page" width="400px">
 
 Users will also have access to previous matches made by our application.
+
+## Demo
+Here is a GIF demonstrating the usage of PartnerUp:
+
+![PartnerUp Web Demo](assets/partnerup_gif.gif)
+
+[Webpage](https://partnerup.ddnsfree.com)
 
 ## Technologies
 - **Libraries**
@@ -92,16 +101,16 @@ Users will also have access to previous matches made by our application.
     - /api/users   
     POST: This route is used to submit the user's GitHub username
 
-    - /api/users/<user_id>
-    GET: This route is used to retrieve information about a specific user
-    DELETE: This route is used to delete a specific user.
+    - /api/users/<user_id>  
+    GET: This route is used to retrieve information about a specific user  
+    DELETE: This route is used to delete a specific user
 
-    - /api/users/<user_id>/partners
+    - /api/users/<user_id>/partners  
     GET: This route is used to retrieve a specific user’s partners
 
-    - /api/users/<user_id>/partners/<partner_id>
-    GET: This route is used to retrieve a specific user’s partner
-    POST: This route is used to submit a specific user’s partner
+    - /api/users/<user_id>/partners/<partner_id>  
+    GET: This route is used to retrieve a specific user’s partner  
+    POST: This route is used to submit a specific user’s partner  
     DELETE: This route is used to delete a specific user’s partner
 
 - **3rd-party API**
@@ -124,22 +133,24 @@ Users could directly access and sync their repositories within the application, 
 - **Mobile Application**: Developing a mobile application version of PartnerUp would enable users to access the platform on their smartphones or tablets.
 This would increase accessibility and convenience, allowing users to search for partners, communicate, and manage projects on the go.
 
+## Known Bugs
+- **Slow Match Functionality**: The current implementation of the match functionality experiences a delay of approximately 15 seconds or more in finding a match.
+This delay is caused by factors such as API response time, processing complexity, and data volume.
+Addressing these factors and optimizing the match functionality is a priority for future versions of the application.
+The goal is to reduce the processing time and provide users with a faster and more efficient matching experience.
+
 ## Blog Post
-Following the completion of the development phase, I wrote a comprehensive blog post, documenting my entire experience throughout the project.
+Following the completion of the development phase, I wrote a comprehensive blog post, documenting my entire experience throughout the project.  
     - []()
 
 ## Authors
-### Ajisafe Oluwapelumi
+**Ajisafe Oluwapelumi** - Designer & Software Engineer
 - [GitHub](https://github.com/ajipelumi)  
 - [LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/)  
 - [Twitter](https://twitter.com/the_pelumi)  
 - [Dev](https://dev.to/ajipelumi)  
 
-Oluwapelumi is a full-stack software engineer working on both the front-end and back-end of this project.
-Working on PartnerUp is significant to Oluwapelumi as it represents the culmination of the past nine (9) months of dedicated learning, practical experience, and a relentless pursuit of excellence at the ALX software engineering program.
-It's also an opportunity to make a meaningful impact on the lives of ALX students by solving a real problem they face: finding suitable project partners.
-
-If you would like to contact [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), feel free to reach out!
+If you have ideas for partnerup or you would like to connect with [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), please feel free to reach out!
 
 ## Acknowledgement
 - ALX Staff & Students  
@@ -148,3 +159,4 @@ If you would like to contact [Oluwapelumi](https://www.linkedin.com/in/ajisafeol
 - Olagunju Abraham  
 - Durojaiye Oladipupo  
 - Durojaiye Dickson  
+- You
