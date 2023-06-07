@@ -5,6 +5,8 @@
 - [Getting Started](#getting-started)
 - [Technologies](#technologies)
 - [APIs and Methods](#apis-and-methods)
+- [Future Features](#future-features)
+- [Blog Post](#blog-post)
 - [Authors](#authors)
 - [Acknowledgement](#acknowledgement)
 
@@ -28,12 +30,12 @@ Join us on this exciting journey, log in with your GitHub account, and revolutio
 ## Getting Started
 <img src="assets/login_page.png" alt="PartnerUp Login Page" width="400px">
 
-Using PartnerUp is simple and efficient. After logging in with their GitHub account, users can navigate to the partner search section.
+Using PartnerUp is simple and efficient. After logging in with their GitHub account, users can navigate to the find partner section.
 
 <img src="assets/profile_page.png" alt="PartnerUp Profile Page" width="400px">
 <img src="assets/search_page.png" alt="PartnerUp Search Page" width="400px">
 
-Here, they can specify their preferences for project partners, such as skill levels, commits, or other criteria.
+Here, they can specify their preferences for project partners, such as commits, or other criteria.
 
 <img src="assets/match_page.png" alt="PartnerUp Match Page" width="400px">
 
@@ -47,11 +49,16 @@ Users will also have access to previous matches made by our application.
 - **Libraries**
     - Flask: web framework for Python
     - PyGithub: library for interacting with the GitHub API using Python
-    - Requests: library for making HTTP requests using Python
     - Jinja2: template engine for Flask
     - jQuery: front-end library for CSS and JavaScript
     - SQLAlchemy: high-level tools for working with databases
     - MySQLdb: python interface for connecting to a MySQL database
+    - Matplotlib: plotting library for Python
+    - Flask-Cors: Flask extension for handling cross-origin resource sharing
+
+- **Server Software**
+    - Nginx: high-performance web server and reverse proxy server
+    - Gunicorn: WSGI HTTP server for Python
 
 - **Languages**
     - Python: backend language for building the web application
@@ -69,12 +76,20 @@ Users will also have access to previous matches made by our application.
  
 - **Resources**
     - GitHub API documentation: for accessing GitHub data using the API
+    - PyGitHub documentation: for working with GitHub API
     - Flask documentation: for working with the Flask web framework
+
+- **Design**
+    - Balsamiq: wireframing and prototyping tool
+    - Adobe Illustrator: vector graphics editor
+    - Adobe Photoshop: raster graphics editor
+
+- **Project Management**
+    - Trello: project management and collaboration tool
 
 ## APIs and Methods
 - **API Routes**
-    - /api/users
-    GET: This route is used to retrieve users
+    - /api/users   
     POST: This route is used to submit the user's GitHub username
 
     - /api/users/<user_id>
@@ -90,30 +105,46 @@ Users will also have access to previous matches made by our application.
     DELETE: This route is used to delete a specific user’s partner
 
 - **3rd-party API**
-    
-    https://api.github.com
-    - GET /users/{username}: Retrieve information about a specific GitHub user.
-    - GET /users/{username}/repos: Retrieve a list of repositories owned by a specific GitHub user.
-    - GET /repos/{owner}/{repo}: Retrieve information about a specific GitHub repository.
-    - GET /repos/{owner}/{repo}/commits: Retrieve a list of commits made to a specific GitHub repository.
+    - PyGitHub proved to be a valuable tool for interacting with the GitHub API, eliminating the need for direct interaction with the API itself.
+
+## Future Features
+- **Enhanced Partner Matching**: Currently, the application matches users based on commits and other criteria specified in their preferences. 
+In the future, additional factors such as project interests, past experience, and availability could be considered to improve the accuracy of partner matching.
+This could involve incorporating machine learning algorithms or expanding the range of data analyzed from GitHub profiles.
+
+- **Reputation and Feedback System**: Implementing a reputation and feedback system would enable users to provide feedback on their project partners' collaboration skills and performance.
+This would help build a community-driven platform where users can make more informed decisions when selecting partners for future projects.
+
+- **Advanced Search Filters**: Expanding the search functionality with advanced filters would allow users to refine their partner search based on specific criteria.
+These filters could include factors such as location, or project complexity. Providing users with more granular control over their partner search would enhance the overall user experience.
+
+- **Integration with Version Control Systems**: Integrating the application with popular version control systems like Git would enable seamless repository management and code collaboration.
+Users could directly access and sync their repositories within the application, making it easier to work on shared projects and track code changes.
+
+- **Mobile Application**: Developing a mobile application version of PartnerUp would enable users to access the platform on their smartphones or tablets.
+This would increase accessibility and convenience, allowing users to search for partners, communicate, and manage projects on the go.
+
+## Blog Post
+Following the completion of the development phase, I wrote a comprehensive blog post, documenting my entire experience throughout the project.
+    - []()
 
 ## Authors
 ### Ajisafe Oluwapelumi
-[GitHub](https://github.com/ajipelumi) <br>
-[LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/) <br>
-[Twitter](https://twitter.com/the_pelumi) <br>
-[Dev](https://dev.to/ajipelumi) <br>
+- [GitHub](https://github.com/ajipelumi)  
+- [LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/)  
+- [Twitter](https://twitter.com/the_pelumi)  
+- [Dev](https://dev.to/ajipelumi)  
 
 Oluwapelumi is a full-stack software engineer working on both the front-end and back-end of this project.
-Working on PartnerUp is a significant milestone in Oluwapelumi's career as it represents the culmination of the last one year of dedicated learning, practical experience, and a relentless pursuit of excellence in ALX software engineering program.
+Working on PartnerUp is significant to Oluwapelumi as it represents the culmination of the past nine (9) months of dedicated learning, practical experience, and a relentless pursuit of excellence at the ALX software engineering program.
 It's also an opportunity to make a meaningful impact on the lives of ALX students by solving a real problem they face: finding suitable project partners.
 
 If you would like to contact [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), feel free to reach out!
 
 ## Acknowledgement
-ALX Staff & Student <br>
-Holberton School Staff & Student <br>
-Abdulqadir Ahmad <br>
-Durojaiye Oladipupo <br>
-Durojaiye Dickson <br>
-Areola Daniel <br>
+- ALX Staff & Students  
+- Holberton School Staff & Students  
+- Abdulqadir Ahmad  
+- Olagunju Abraham  
+- Durojaiye Oladipupo  
+- Durojaiye Dickson  
