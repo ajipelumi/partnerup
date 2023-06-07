@@ -1,6 +1,6 @@
 <img src="assets/partnerup_logo.png" alt="PartnerUp Logo" width="400px">
 
-## Table of Content
+## Table of Content 📋
 - [About PartnerUp](#about-partnerup)
 - [Getting Started](#getting-started)
 - [Demo](#demo)
@@ -12,7 +12,7 @@
 - [Authors](#authors)
 - [Acknowledgement](#acknowledgement)
 
-## About PartnerUp
+## About PartnerUp 🖋️
 **[PartnerUp](https://partnerup.ddnsfree.com)** is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
 We understand that collaborating on projects can be a daunting task, with students often struggling to find compatible partners who share their coding style and work ethic.
 This can lead to frustration, unproductive experiences, and subpar project outcomes.
@@ -29,7 +29,7 @@ PartnerUp is more than just a project partner matching service.
 It's a community-driven platform that aims to empower students, enhance project outcomes, and cultivate a culture of originality and collaboration.
 Join us on this exciting journey, log in with your GitHub account, and revolutionize the way you find project partners at ALX!
 
-## Getting Started
+## Getting Started 🌠
 <img src="assets/login_page.png" alt="PartnerUp Login Page" width="400px">
 
 Using PartnerUp is simple and efficient. After logging in with their GitHub account, users can navigate to the find partner section.
@@ -47,14 +47,14 @@ Our application then analyzes coding styles, commits, and repositories to filter
 
 Users will also have access to previous matches made by our application.
 
-## Demo
+## Demo 📹
 Here is a GIF demonstrating the usage of PartnerUp:
 
-![PartnerUp Web Demo](assets/partnerup_gif.gif)
+<img src="assets/partnerup_gif.gif" alt="PartnerUp Web Demo" width="600">
 
 [Webpage](https://partnerup.ddnsfree.com)
 
-## Technologies
+## Technologies 🧑‍💻
 - **Libraries**
     - Flask: web framework for Python
     - PyGithub: library for interacting with the GitHub API using Python
@@ -96,7 +96,7 @@ Here is a GIF demonstrating the usage of PartnerUp:
 - **Project Management**
     - Trello: project management and collaboration tool
 
-## APIs and Methods
+## APIs and Methods 🔑
 - **API Routes**
     - /api/users   
     POST: This route is used to submit the user's GitHub username
@@ -116,7 +116,7 @@ Here is a GIF demonstrating the usage of PartnerUp:
 - **3rd-party API**
     - PyGitHub proved to be a valuable tool for interacting with the GitHub API, eliminating the need for direct interaction with the API itself.
 
-## Future Features
+## Future Features 📇
 - **Enhanced Partner Matching**: Currently, the application matches users based on commits and other criteria specified in their preferences. 
 In the future, additional factors such as project interests, past experience, and availability could be considered to improve the accuracy of partner matching.
 This could involve incorporating machine learning algorithms or expanding the range of data analyzed from GitHub profiles.
@@ -133,26 +133,29 @@ Users could directly access and sync their repositories within the application, 
 - **Mobile Application**: Developing a mobile application version of PartnerUp would enable users to access the platform on their smartphones or tablets.
 This would increase accessibility and convenience, allowing users to search for partners, communicate, and manage projects on the go.
 
-## Known Bugs
+## Known Bugs 🐛
 - **Slow Match Functionality**: The current implementation of the match functionality experiences a delay of approximately 15 seconds or more in finding a match.
 This delay is caused by factors such as API response time, processing complexity, and data volume.
 Addressing these factors and optimizing the match functionality is a priority for future versions of the application.
 The goal is to reduce the processing time and provide users with a faster and more efficient matching experience.
 
-## Blog Post
+- **User Experience**: Also, for the best user experience and optimal performance, te recommendation is using the application on a desktop or laptop rather than a mobile phone.
+The application may have variations in user experience and performance on mobile devices. Using a larger screen will ensure better functionality and an enhanced overall experience.
+
+## Blog Post ✍️
 Following the completion of the development phase, I wrote a comprehensive blog post, documenting my entire experience throughout the project.  
     - []()
 
-## Authors
+## Authors 👨
 **Ajisafe Oluwapelumi** - Designer & Software Engineer
 - [GitHub](https://github.com/ajipelumi)  
 - [LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/)  
 - [Twitter](https://twitter.com/the_pelumi)  
 - [Dev](https://dev.to/ajipelumi)  
 
-If you have ideas for partnerup or you would like to connect with [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), please feel free to reach out!
+If you have ideas for partnerup or you would like to contact [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), please feel free to reach out!
 
-## Acknowledgement
+## Acknowledgement 🌟
 - ALX Staff & Students  
 - Holberton School Staff & Students  
 - Abdulqadir Ahmad  
