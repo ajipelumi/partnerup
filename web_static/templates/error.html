@@ -2,9 +2,22 @@
 <html>
 <head>
     <title>Error</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+        font-family: 'Balsamiq Sans';
+        src: url('../fonts/BalsamiqSans-Regular.ttf') format('truetype');
+}
+        body {
+            font-family: 'Balsamiq Sans';
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Error</h1>
-    <p>{{ error_message }}</p>
+    <div class="container">
+        <h1 class="mt-5">Error</h1>
+        <p class="mt-3">{{ error_message }}</p>
+    </div>
 </body>
 </html>

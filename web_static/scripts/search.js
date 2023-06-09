@@ -16,11 +16,12 @@ $(document).ready(() => {
         let repo = $('#repoOption').val();
         let time = $('#timeOption').val();
 
+        toastr.success('Finding a match...', 'Success!');
         let redirectUrl = '/match?project=' + project + '&repo=' + repo + '&time=' + time;
         window.location.href = redirectUrl;
     });
 
-    $('.previous-matches').on('click', function(event) {
+    $('.prev').on('click', function(event) {
         event.preventDefault();
         window.location.href = '/previous-matches';
     });

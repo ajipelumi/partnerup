@@ -1,68 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../styles/profile-styles.css?cache_id={{ cache_id }}" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../scripts/profile.js"></script>
-        <title>PartnerUp</title>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <input type="checkbox" id="check">
-                <label for="check" class="checkbtn">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <a href="#"><img src="../images/vertical_lockup.svg" alt="PartnerUp Vertical LockUp Logo" class="logo"></a>
-                <nav>
-                    <ul>
-                        <li><a href="#" id="home-link">Home</a></li>
-                        <li><a href="search.html">Find Partner</a></li>
-                        <li><a href="#" id="logout-link">Logout</a></li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../styles/profile-styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>PartnerUp</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../images/vertical_lockup.svg" alt="PartnerUp Vertical LockUp Logo" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" id="home-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="search.html">Find Partner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="logout-link">Logout</a>
+                        </li>
                     </ul>
-                </nav>
+                </div>
             </div>
-        </header>
-        <div>
-            <div class="w-container">
-                <address class="columns w-row">
-                    <div class="column">
-                        <div class="white-wrapper">
-                            <img src="{{ user_response.get('avatar_url') }}" alt="Profile Picture" class="circle-profile"/>
-                            <div class="grey-rule"></div>
-                            <h3 class="full-name">{{ user_response.get('name') }}</h3>
-                            <div class="username">@{{ user_response.get('login') }}</div>
-                            <div class="username">Cohort {{ cohort_number }}</div>
-                            <div class="grey-rule"></div>
-                            <a href="{{ user_response.get('html_url') }}" class="social-icon-link w-inline-block">
-                                <img src="../images/github-icon.svg" width="25" alt="GitHub Icon"/>
-                            </a>
-                        </div>
+        </nav>
+    </header>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ user_response.get('avatar_url') }}" alt="Profile Picture" class="card-img-top" id="circle-profile">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ user_response.get('name') }}</h4>
+                        <p class="card-text">@{{ user_response.get('login') }}</p>
+                        <p class="card-text">Cohort {{ cohort_number }}</p>
+                        <hr>
+                        <a href="{{ user_response.get('html_url') }}" class="social-icon-link">
+                            <img src="../images/github-icon.svg" width="25" alt="GitHub Icon">
+                        </a>
                     </div>
-                    <div class="content-column">
-                        <h3 class="heading">Repositories</h3>
-                        <div class="top-repo-line"></div>
-                        {% for repo in repo_response %}
-                        <div class="all-repos">
-                            <h3 class="heading-2">
-                                <strong class="repos">{{ repo.get('name') }}</strong>
-                            </h3>
-                            <div class="text-block">{{ repo.get('description') }}</div>
-                            <div class="repo-line"></div>
-                        </div>
-                        {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h4 class="mt-4">Repositories</h4>
+                <hr>
+                {% for repo in repo_response %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ repo.get('name') }}</h5>
+                        <p class="card-text">{{ repo.get('description') }}</p>
                     </div>
-                </address>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        <footer>
-            <div>
-                <p>&copy; 2023 PartnerUp. All rights reserved.</p>
-                <p>Created by: <a href="https://github.com/ajipelumi">Ajisafe Oluwapelumi</a></p>
-            </div> 
-        </footer>
-    </body>
+    </div>
+    <footer class="fixed-bottom">
+        <div class="container py-2">
+            <p>&copy; 2023 PartnerUp. All rights reserved.</p>
+            <p>Created by: <a href="https://github.com/ajipelumi">Ajisafe Oluwapelumi</a></p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../scripts/profile.js"></script>
+</body>
 </html>
