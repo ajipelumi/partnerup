@@ -11,6 +11,7 @@
 
 body {
     margin: 0;
+    padding-bottom: 60px;
     font-family: 'Balsamiq Sans';
 }
 
@@ -39,10 +40,6 @@ header {
     margin-right: auto;
     margin-bottom: 28px;
     margin-left: auto;
-    border-top-left-radius: 500px;
-    border-top-right-radius: 500px;
-    border-bottom-left-radius: 500px;
-    border-bottom-right-radius: 500px;
 }
 
 /* Set the styles for the footer */
