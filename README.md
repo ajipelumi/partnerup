@@ -63,7 +63,7 @@ Here is a GIF demonstrating the usage of PartnerUp:
     - SQLAlchemy: high-level tools for working with databases
     - MySQLdb: python interface for connecting to a MySQL database
     - Matplotlib: plotting library for Python
-    - Flask-Cors: Flask extension for handling cross-origin resource sharing
+    - Flask-Cors: flask extension for handling cross-origin resource sharing
 
 - **Server Software**
     - Nginx: high-performance web server and reverse proxy server
@@ -79,6 +79,7 @@ Here is a GIF demonstrating the usage of PartnerUp:
 
 - **Frameworks**
     - Flask: web framework for building the web application
+    - Bootstrap: frontend framework for making the web application responsive
 
 - **Database**
     - MySQL: open-source relational database management system
@@ -87,6 +88,7 @@ Here is a GIF demonstrating the usage of PartnerUp:
     - GitHub API documentation: for accessing GitHub data using the API
     - PyGitHub documentation: for working with GitHub API
     - Flask documentation: for working with the Flask web framework
+    - Bootstrap documentation: for working with Bootstrap components
 
 - **Design**
     - Balsamiq: wireframing and prototyping tool
@@ -139,11 +141,8 @@ This delay is caused by factors such as API response time, processing complexity
 Addressing these factors and optimizing the match functionality is a priority for future versions of the application.
 The goal is to reduce the processing time and provide users with a faster and more efficient matching experience.
 
-- **User Experience**: Also, for the best user experience and optimal performance, te recommendation is using the application on a desktop or laptop rather than a mobile phone.
-The application may have variations in user experience and performance on mobile devices. Using a larger screen will ensure better functionality and an enhanced overall experience.
-
 ## Blog Post ✍️
-Following the completion of the development phase, I wrote a comprehensive blog post, documenting my entire experience throughout the project.  
+Following the completion of the development phase, I documented my entire experience implementing various part the project.  
     - []()
 
 ## Authors 👨
