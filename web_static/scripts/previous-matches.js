@@ -6,6 +6,6 @@ $(document).ready(() => {
 
     $('#logout-link').on('click', function(event) {
         event.preventDefault();
-        window.location.replace('/login.html');
+        window.location.replace('/login');
     });
 });
