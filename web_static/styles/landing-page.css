@@ -1,0 +1,140 @@
+/* This file contains the styles for the landing page */
+
+/* Import the font */
+
+@font-face {
+    font-family: 'Balsamiq Sans';
+    src: url('../fonts/BalsamiqSans-Regular.ttf') format('truetype');
+}
+
+/* Set the styles */
+
+body {
+    margin: 0;
+    padding-bottom: 60px;
+    font-family: 'Balsamiq Sans';
+    color: black;
+}
+
+nav {
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 10px 10px;
+}
+
+section, header {
+    font-family: 'Balsamiq Sans';
+}
+
+.logo {
+    width: 200px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.navig {
+    margin-right: 10px;
+}
+
+#signup-link,
+#feature-link,
+#about-link {
+    margin-right:5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#login-link {
+    margin-right:5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+}
+
+#login-link:hover {
+    opacity: 0.8;
+}
+
+/* Set the styles for the footer */
+
+footer {
+    font-family: 'Balsamiq Sans';
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    border-top: 2px solid black;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+footer div p {
+    margin: 0 10px;
+}
+
+a {
+    color: blue;
+}
+
+/* Set the styles for the header */
+
+.header-cls {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#get-started {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 8px 20px;
+    border: 2px solid black;
+    background: white;
+    color: black;
+  }
+  
+#get-started:hover {
+    background: black;
+    color: white;
+}
+
+.social-icons a {
+    color: black;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.social-icons a:hover {
+    opacity: 0.5;
+}
+
+#git-hub {
+    background: black;
+    border: 2px solid black;
+}
+
+#git-hub:hover {
+    background: white;
+    color: black;
+}
+
+@media (min-width: 992px) {
+    #meme-wrapper {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    #img-wrapper {
+        width: 45%;
+        margin: 0 auto;
+    }
+}  
