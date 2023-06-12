@@ -6,7 +6,7 @@ $(document).ready(() => {
 
     $('#logout-link').on('click', function(event) {
         event.preventDefault();
-        window.location.replace('/index.html');
+        window.location.replace('/login.html');
     });
 
     $('.prev').on('click', function(event) {
