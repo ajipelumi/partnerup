@@ -50,7 +50,7 @@ Users will also have access to previous matches made by our application.
 ## Demo 📹
 Here is a GIF demonstrating the usage of PartnerUp:
 
-<img src="assets/partnerup_gif.gif" alt="PartnerUp Web Demo" width="600">
+<img src="assets/partnerup_gif.gif" alt="PartnerUp Web Demo" height="300">
 
 [Webpage](https://partnerup.pelumi.tech)
 
