@@ -1,19 +1,26 @@
 <img src="assets/partnerup_logo.png" alt="PartnerUp Logo" width="400px">
 
+# PartnerUp
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 ## Table of Content 📋
-- [About PartnerUp](#about-partnerup)
-- [Getting Started](#getting-started)
-- [Demo](#demo)
-- [Technologies](#technologies)
-- [APIs and Methods](#apis-and-methods)
-- [Future Features](#future-features)
-- [Known Bugs](#known-bugs)
-- [Blog Post](#blog-post)
+- [Introduction](#introduction-🖋️)
+- [Installation](#installation-🔽)
+- [Usage](#usage-🎯)
+- [Getting Started](#getting-started-🌠)
+- [Demo](#demo-📹)
+- [Technologies](#technologies-🧑‍💻)
+- [APIs and Methods](#apis-and-methods-🔑)
+- [Future Features](#future-features-📇)
+- [Known Bugs](#known-bugs-🐛)
+- [Contributing](#contributing-🔼)
+- [License](#license-📋)
 - [Authors](#authors)
 - [Acknowledgement](#acknowledgement)
 
-## About PartnerUp 🖋️
-**[PartnerUp](https://partnerup.pelumi.tech)** is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
+## Introduction 🖋️
+PartnerUp is a web application designed to address the challenges faced by ALX students in finding suitable project partners.
 We understand that collaborating on projects can be a daunting task, with students often struggling to find compatible partners who share their coding style and work ethic.
 This can lead to frustration, unproductive experiences, and subpar project outcomes.
 
@@ -28,6 +35,40 @@ By bringing students together and fostering productive collaborations, we believ
 PartnerUp is more than just a project partner matching service.
 It's a community-driven platform that aims to empower students, enhance project outcomes, and cultivate a culture of originality and collaboration.
 Join us on this exciting journey, log in with your GitHub account, and revolutionize the way you find project partners at ALX!
+
+**[Visit PartnerUp](https://partnerup.pelumi.tech)**
+
+For more details about the motivation and features of PartnerUp, please refer to our [blog](https://dev.to/ajipelumi/partnerup-revolutionizing-project-collaboration-4bkj).
+
+## Installation 🔽
+1. Clone the repository: `git clone https://github.com/ajipelumi/partnerup.git`
+2. Navigate to the project directory: `cd partnerup`
+3. Install the necessary dependencies:
+   - Open the `config` directory: `cd config`
+   - Run the dependency installation script: `bash install_dependencies.sh`
+   - This script will install the required dependencies for the project.
+4. Configure Nginx:
+   - Copy the Nginx configuration file to the appropriate location: `sudo cp nginx_config /etc/nginx/sites-available/default`
+   - Enable the site: `sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default`
+   - Restart Nginx: `sudo service nginx restart`
+   - Nginx will now be configured to serve the PartnerUp application.
+5. Set up MySQL database:
+   - Run the setup script: `mysql -u <username> -p < setup_mysql_dev.sql`
+   - Replace `<username>` with your MySQL username.
+   - This will create the necessary database structure for the application.
+6. Start the API and Profile services:
+   - Copy the service files to the appropriate location: `sudo cp api.service /etc/systemd/system/` and `sudo cp profile.service /etc/systemd/system/`
+   - Reload systemd: `sudo systemctl daemon-reload`
+   - Start the services: `sudo systemctl start api.service` and `sudo systemctl start profile.service`
+   - The API and Profile services will now be running.
+
+Note: Ensure you enable the necessary permissions and access rights to perform these installation steps.
+
+## Usage 🎯
+1. Ensure that you have completed the installation steps mentioned above.
+2. Open your web browser and visit: `http://localhost`
+3. Login with your GitHub account credentials to authenticate yourself.
+4. Explore the different sections and features of the PartnerUp application.
 
 ## Getting Started 🌠
 <img src="assets/login_page.png" alt="PartnerUp Login Page" width="400px">
@@ -51,8 +92,6 @@ Users will also have access to previous matches made by our application.
 Here is a GIF demonstrating the usage of PartnerUp:
 
 <img src="assets/partnerup_gif.gif" alt="PartnerUp Web Demo" height="300">
-
-[Webpage](https://partnerup.pelumi.tech)
 
 ## Technologies 🧑‍💻
 - **Libraries**
@@ -126,24 +165,22 @@ This could involve incorporating machine learning algorithms or expanding the ra
 - **Reputation and Feedback System**: Implementing a reputation and feedback system would enable users to provide feedback on their project partners' collaboration skills and performance.
 This would help build a community-driven platform where users can make more informed decisions when selecting partners for future projects.
 
-- **Advanced Search Filters**: Expanding the search functionality with advanced filters would allow users to refine their partner search based on specific criteria.
-These filters could include factors such as location, or project complexity. Providing users with more granular control over their partner search would enhance the overall user experience.
-
-- **Integration with Version Control Systems**: Integrating the application with popular version control systems like Git would enable seamless repository management and code collaboration.
-Users could directly access and sync their repositories within the application, making it easier to work on shared projects and track code changes.
-
-- **Mobile Application**: Developing a mobile application version of PartnerUp would enable users to access the platform on their smartphones or tablets.
-This would increase accessibility and convenience, allowing users to search for partners, communicate, and manage projects on the go.
-
 ## Known Bugs 🐛
 - **Slow Match Functionality**: The current implementation of the match functionality experiences a delay of approximately 15 seconds or more in finding a match.
 This delay is caused by factors such as API response time, processing complexity, and data volume.
 Addressing these factors and optimizing the match functionality is a priority for future versions of the application.
 The goal is to reduce the processing time and provide users with a faster and more efficient matching experience.
 
-## Blog Post ✍️
-Following the completion of the development phase, I documented my entire experience implementing various part the project.  
-    - []()
+## Contributing 🔼
+We welcome contributions from the community. To contribute to PartnerUp, follow these steps:
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature`
+3. Commit your changes: `git commit -am 'Add my feature'`
+4. Push to the branch: `git push origin feature`
+5. Submit a pull request
+
+## License 📋
+PartnerUp is released under the [MIT License](LICENSE)
 
 ## Authors 👨
 **Ajisafe Oluwapelumi** - Designer & Software Engineer
@@ -151,8 +188,6 @@ Following the completion of the development phase, I documented my entire experi
 - [LinkedIn](https://www.linkedin.com/in/ajisafeoluwapelumi/)  
 - [Twitter](https://twitter.com/the_pelumi)  
 - [Dev](https://dev.to/ajipelumi)  
-
-If you have ideas for partnerup or you would like to contact [Oluwapelumi](https://www.linkedin.com/in/ajisafeoluwapelumi/), please feel free to reach out!
 
 ## Acknowledgement 🌟
 - ALX Staff & Students  
