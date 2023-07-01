@@ -15,6 +15,7 @@ Environment="PARTNERUP_MYSQL_DB=partnerup_dev_db"
 ExecStart=/usr/local/bin/gunicorn --bind :5001 --workers 3 --timeout 60 web_static.profile:app
 StandardError=file:/tmp/profile-error.log
 StandardOutput=file:/tmp/profile-access.log
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

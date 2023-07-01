@@ -23,5 +23,10 @@ pip install flask-cors
 pip install sqlalchemy
 
 # Install SQLClient
-pip install sqlclient
+sudo apt install -y python3-dev default-libmysqlclient-dev build-essential
 
+# Install MySQL
+sudo apt install -y mysql-server
+
+# Install Nginx
+sudo apt install -y nginx

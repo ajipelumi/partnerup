@@ -14,15 +14,15 @@ server {
     }
 
     location /login {
-        alias /var/www/html/login.html;
+        try_files $uri $uri/ /login.html;
     }
 
     location /signup {
-        alias /var/www/html/signup.html;
+        try_files $uri $uri/ /signup.html;
     }
 
     location /search {
-        alias /var/www/html/search.html;
+        try_files $uri $uri/ /search.html;
     }
 
     location /api/v1/ {

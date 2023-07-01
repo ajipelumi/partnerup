@@ -15,6 +15,7 @@ Environment="PARTNERUP_MYSQL_DB=partnerup_dev_db"
 ExecStart=/usr/local/bin/gunicorn --workers 3 --bind :5000 api.v1.app:app
 StandardError=file:/tmp/api-error.log
 StandardOutput=file:/tmp/api-access.log
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
