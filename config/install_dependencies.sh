@@ -30,3 +30,6 @@ sudo apt install -y mysql-server
 
 # Install Nginx
 sudo apt install -y nginx
+
+# Install Dotenv
+pip install python-dotenv
